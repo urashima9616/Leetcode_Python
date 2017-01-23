@@ -1,5 +1,5 @@
 """
-This is a solution set fot leetcode problems.
+This is a solution set for the leetcode problems
 """
 import sys,os
 class Solution():
