@@ -22,9 +22,9 @@ class Solution(object):
         path_element = path.split('/')
         idx = 0
         for each in path_element:
-            if each[0] == '':
+            if each == '':
                 continue
-            if each[0] == '.':
+            if each[0]  == '.':
                 moves = len(each)-1
                 if moves == 0:
                     pass
@@ -33,12 +33,14 @@ class Solution(object):
                 elif moves >0 and moves < idx:
                     idx = idx - moves
             else:
-                idx += 1
-                if len(simpath)-1 <= idx:
+                if idx == len(simpath) - 1:
                     simpath.append(each)
-                else:
-                    simpath[idx] = each
-        return ''.join(simpath[0:idx+1])
+                    idx += 1
+                elif idx < len(simpath) - 1:
+                    simpath[idx+1] = each
+                    idx += 1
+        result = '/'.join(simpath[0:idx+1])
+        return result[1:]
 
 Solve = Solution()
-Solve.simplifyPath('//')
+print Solve.simplifyPath('/a/./b/../../c/')
