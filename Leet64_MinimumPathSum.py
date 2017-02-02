@@ -22,25 +22,25 @@ class Solution(object):
         mincost = [[0 for i in xrange(xdim)] for j in xrange(ydim) ] 
         mincost[0][0] = grid[0][0]
         for i in xrange(1, xdim):
-            mincost[i][0] = mincost[i-1][0] + grid[i][0]
+            mincost[0][i] = mincost[0][i-1] + grid[0][i]
         for j in xrange(1, ydim):
-            mincost[0][j] = mincost[0][j-1] + grid[0][j]
+            mincost[j][0] = mincost[j-1][0] + grid[j][0]
         for i in xrange(1, xdim):
             for j in xrange(1, ydim):
-                mincost[i][j] = min(mincost[i-1][j], mincost[i][j-1])
+                mincost[j][i] = min(mincost[j-1][i], mincost[j][i-1])
         #Trace back to get the path
         path = [[xdim-1, ydim-1]]
         i, j = (xdim-1, ydim-1)
         while i!= 0 and j!=0:
-            if mincost[i-1][j] <= mincost[i][j-1]:
-                path.append([i-1,j])
-                i -= 1
-            else:
+            if mincost[j-1][i] <= mincost[j][i-1]:
                 path.append([i,j-1])
-                j-=1
+                j -= 1
+            else:
+                path.append([i-1,j])
+                i-=1
             #path.append([i-1,j]) if mincost[i-1][j] <= mincost[i][j-1] else path.append([i,j-1])
         return mincost[xdim-1][ydim-1]
 
 if __name__ == '__main__':
     Solve = Solution()
-    Solve.minPathSum([[0]])
+    print Solve.minPathSum([[1, 2, 5], [3, 2, 1]])
