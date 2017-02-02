@@ -27,7 +27,7 @@ class Solution(object):
             mincost[j][0] = mincost[j-1][0] + grid[j][0]
         for i in xrange(1, xdim):
             for j in xrange(1, ydim):
-                mincost[j][i] = min(mincost[j-1][i], mincost[j][i-1])
+                mincost[j][i] = min(mincost[j-1][i], mincost[j][i-1]) + grid[j][i]
         #Trace back to get the path
         path = [[xdim-1, ydim-1]]
         i, j = (xdim-1, ydim-1)
@@ -39,7 +39,7 @@ class Solution(object):
                 path.append([i-1,j])
                 i-=1
             #path.append([i-1,j]) if mincost[i-1][j] <= mincost[i][j-1] else path.append([i,j-1])
-        return mincost[xdim-1][ydim-1]
+        return mincost[ydim-1][xdim-1]
 
 if __name__ == '__main__':
     Solve = Solution()
