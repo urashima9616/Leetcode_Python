@@ -12,8 +12,6 @@ Difficulty: Easy
 Contributors: Admin
 """
 
-
-
 class Solution(object):
     def addBinary(self, a, b):
         """
@@ -38,7 +36,7 @@ class Solution(object):
             elif idx2 < 0:
                 temp = int(a[idx1]) + carry
             else:
-                temp = int(b[idx2]) + int(a[idx2]) + carry
+                temp = int(b[idx2]) + int(a[idx1]) + carry
             
             if temp == 1:
                 carry = 0
@@ -49,8 +47,11 @@ class Solution(object):
             elif temp == 3:
                 carry = 1
                 result.append('1')
+            elif temp == 0:
+                result.append('0')
+                carry = 0
         
         if carry == 1:
             result.append('1')
-        result.reverse
-        return str(result)
+        result.reverse()
+        return ''.join(result)
