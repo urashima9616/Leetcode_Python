@@ -19,16 +19,16 @@ class Solution(object):
         :rtype: List[TreeNode]
         """
         choice_pool = [i for i in xrange(n+1)]
-        res = self.DFSearch(choice_pool, 1, n+1)
+        res = self.DFSearch(choice_pool, 1, n)
         return res
 
     def DFSearch(self, choice_pool, start, stop):
         if start > stop:
             return []
-        elif start  == stop-1:
-            return [choice_pool[start]]
+        elif start  == stop:
+            return [TreeNode(choice_pool[start])]
         treelist = []
-        for i in xrange(start, stop):
+        for i in xrange(start, stop+1):
             leftlist = self.DFSearch(choice_pool, start, i-1)
             rightlist = self.DFSearch(choice_pool, i+1, stop)
             for left in leftlist or [None]:
