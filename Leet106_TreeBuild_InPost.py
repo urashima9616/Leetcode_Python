@@ -16,7 +16,7 @@ class Solution(object):
             return None
         root = self.Treebuild(inorder, postorder)
         return root
-    
+
     def Treebuild(self, inorder, postorder):
         if not inorder:
             return None
