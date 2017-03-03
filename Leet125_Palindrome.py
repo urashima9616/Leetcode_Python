@@ -14,7 +14,6 @@ class Solution(object):
         """
         if not s or len(s) == 1:
             return True
-        
         pt1 = 0
         pt2 = len(s)-1
         while pt1 < len(s) and pt2 > 0:
