@@ -32,32 +32,35 @@ class Solution(object):
                         choice_pool[each].append(other)
                     else:
                         choice_pool[each] = [other]
-        path = []
+            if not choice_pool.has_key(each):
+                choice_pool[each] = None
         res = []
+        result = []
         minpath = [len(beginWord)]
-        
-        self.DFSearch(choice_pool, beginWord, path, 0, res, minpath, endWord)
-        return [[beginWord] + each for each in res if len(each) == minpath[0]]
-        
-    def DFSearch(self, choice_pool, root, path, k, res, minpath, target):
-        if root == target:
-            if path[:k] not in res:
-                res.append(path[:k])
-                if k < minpath[0]:
-                    minpath[0] = k
-            return
-        if k > minpath[0]:
-            return
-        if not choice_pool.has_key(root):
-            return
-        for each in choice_pool[root]:
-             if each not in path[:k]:
-                if len(path) == k:
-                    path.append(each)
+        layer = [beginWord]
+        parent_dict = {}
+        finish = 1
+        while layer and beginWord and finish:
+            for each in layer:
+                if each == endWord:
+                    res.append(each)
+                    finish = 0
                 else:
-                    path[k] = each
-                self.DFSearch(choice_pool, each, path, k+1, res, minpath, target)
-
+                    for child in choice_pool[each]:
+                        if not parent_dict.has_key(child):
+                            parent_dict[child] = [each]
+                        else:
+                            parent_dict[child].append(each) 
+            temp = [choice_pool[each] for each in layer if choice_pool[each]]
+            layer = [group_member for group in temp for group_member in group]
+        for each in res:
+            path = [each]
+            while parent_dict.has_key(each):
+                path.append(parent_dict[each])
+                each = parent_dict[each]
+            path.reverse()
+            result.append(path)
+        return result
     def WordDist(self,s,t):
         l1 = len(s)
         l2 = len(t)
@@ -73,5 +76,5 @@ class Solution(object):
             pt += 1
         return count
 Solve = Solution()
-print Solve.findLadders("hot", "dog", ["hit", "dit", "dig", "dog", "hog"])
+print Solve.findLadders("hit", "cog", ["hot","dot","dog","lot","log","cog"])
         
