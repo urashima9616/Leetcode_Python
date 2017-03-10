@@ -51,6 +51,8 @@ class Solution(object):
         for i in xrange(1, lens):
                opt_matrix[i] = min([opt_matrix[j-1] for j in xrange(i+1) if pal_matrix[j][i] == 1 ]) + 1 if not pal_matrix[0][i] else 0
         return opt_matrix[len(s)-1]
+
+        
 Solve = Solution()
 print Solve.minCut("abcccc")
 
