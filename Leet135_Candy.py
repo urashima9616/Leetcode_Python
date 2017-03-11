@@ -18,8 +18,6 @@ Idea: uphills always start with 1
       then scan again from right to left to have uphills(downhills) 1,2,3,4
       return max(candy1, candy2)
 """
-
-
 class Solution(object):
     def candy(self, ratings):
         """
