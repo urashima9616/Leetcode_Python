@@ -1,6 +1,7 @@
 class Solution():
     def DistinctPath(self, m, n):
         path = [[0 for i in xrange(m)] for j in xrange(n)]
+        
         path[0][1] = 1
         path[1][0] = 1
         for i in xrange(1,m):
