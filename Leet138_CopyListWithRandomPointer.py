@@ -32,7 +32,9 @@ class Solution(object):
             pt = pt.next
             pt2 = pt2.next
         return head2
-            
+
+
+
             
             
                     
