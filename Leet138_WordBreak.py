@@ -16,3 +16,18 @@ class Solution(object):
         :type wordDict: List[str]
         :rtype: bool
         """
+        worddict = {}
+        for each in wordDict:
+            worddict[each] = 1
+        possible = [0 for _ in xrange(len(s))]
+        possible[0] = worddict[s[0]] if worddict.has_key(s[0]) else 0
+        for i in xrange(1,len(s)):
+            if worddict.has_key(s[:i+1]):
+                possible[i] = 1
+            else:
+                for k in xrange(i):
+                    if possible[k] and worddict.has_key(s[k+1:i+1]):
+                        possible[i] = 1
+                        break
+        return True if possible[len(s)-1] else False
+
