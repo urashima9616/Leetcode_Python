@@ -16,6 +16,7 @@ class Solution(object):
         :type wordDict: List[str]
         :rtype: bool
         """
+        
         worddict = {}
         for each in wordDict:
             worddict[each] = 1
