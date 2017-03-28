@@ -26,4 +26,12 @@ class Solution(object):
             word[_] = 1 if not word.has_key(_) else 1
         #Make the find_matrix
         find_matrix = [0 for _ in xrange(len(s))]
-        
+        for i in xrange(len(s)):
+            if word.has_key(s[:i+1]):
+                find_matrix[i] = 1
+                continue
+            else:
+                for j in xrange(i):
+                    if find_matrix[j] == 1 and word.has_key(s[j+1:i+1]):
+                        find_matrix[i] = 1
+                        continue
