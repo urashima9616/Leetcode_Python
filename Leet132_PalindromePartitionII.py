@@ -24,6 +24,8 @@ P[i,j] = P[i-1, j-1] if s[i] == s [j] else 0
 
 P[i,i]=1
 P[0, i] = s[:i] == s[i-1::-1]
+
+You can change the min to sum
 """
 
 class Solution(object):
