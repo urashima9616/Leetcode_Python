@@ -7,6 +7,15 @@ The longest consecutive elements sequence is [1, 2, 3, 4]. Return its length: 4.
 
 Your algorithm should run in O(n) complexity.
 
+Key idea: 
+将序列中的所有数存到一个unordered_set中。
+对于序列里任意一个数A[i]，
+我们可以通过set马上能知道A[i]+1和A[i]-1是否也在序列中。
+如果在，继续找A[i]+2和A[i]-2，
+以此类推，直到将整个连续序列找到。
+为了避免在扫描到A[i]-1时再次重复搜索该序列，
+在从每次搜索的同时将搜索到的数从set中删除。
+直到set中为空时，所有连续序列搜索结束。
 """
 
 class Solution(object):
