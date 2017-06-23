@@ -11,7 +11,6 @@ endWord = "cog"
 wordList = ["hot","dot","dog","lot","log","cog"]
 
 
-key idea: remember the word has been branched
 """
 
 class Solution(object):
@@ -56,7 +55,7 @@ class Solution(object):
             for each in pos_dict[i].keys():
                 temp = current[:i]+each+current[i+1:]
                 if temp in wordList and temp not in visited:
-                    visited.add(temp)
+                    #visited.add(temp)
                     flag = flag | self.DFSearch(path+[temp], temp, target, level+1, pos_dict, shortest_to_date, res, wordList, visited)
                 else:
                     continue
