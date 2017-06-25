@@ -12,6 +12,8 @@ why ? because you must start from a node where you have more gas than cost.
 So if you start at 1, let say, the accumulative gain at i is less than you start at 0,
 therefore there is no need to check any node between [start, i]
 so you will check i+1 onwards
+
+The code below is valid only there is unique solution
 """
 
 class Solution(object):
@@ -35,6 +37,9 @@ class Solution(object):
                 start = i+1
             else:
                 tank = gas[i] - cost[i] + tank
+        #Here the idea is:
+        #Since you arrived at i-1 => you have non-zero tank
+        #
         gas_sum += gas[-1]
         cost_sum += cost[-1]
         if gas_sum < cost_sum:

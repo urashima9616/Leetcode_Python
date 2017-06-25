@@ -11,7 +11,6 @@ Key idea:
 send another slow pointer when the other slow, fast pair meets
 
 """
-
 # Definition for singly-linked list.
 # class ListNode(object):
 #     def __init__(self, x):
