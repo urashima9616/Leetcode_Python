@@ -12,7 +12,6 @@ if mid less than both ends => min on your left
 if min greater than both ends => min on your right
 """
 
-
 class Solution(object):
     def findMin(self, nums):
         """
