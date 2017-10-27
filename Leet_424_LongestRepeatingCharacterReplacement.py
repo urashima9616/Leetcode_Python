@@ -16,14 +16,13 @@ def longestReplacement(s,k):
     
     for i in xrange(1, len(s)):
         for j in reversed(xrange(1, k)):
-            if s[i] == s[i-1]:
-                opt[i][j] = opt[i-1][j] + 1
-            else:
-                max_cur = 0
-                for t in xrange(i):
-                    if penalty_mat[t][i] != -1:
-                        penalty = penalty_mat[t][i]
-                    else:
+            max_cur = 0
+            for t in xrange(i):
+                pt = t 
+                penalty = 0
+                while pt <= i:
+                    if s[pt] != opt[t][j]
+                
                         pt = t
                         penalty  = 0
                         while pt <= i:
